@@ -1,0 +1,14 @@
+{
+  "name": "Flash-Cart",
+  "version": "0.0.1",
+  "description": "Electron app of Flash Cart System.",
+  "main": "index.js",
+  "author": "Flash Cart",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^11.3.0"
+  },
+  "scripts": {
+    "start": "electron ."
+  }
+}
