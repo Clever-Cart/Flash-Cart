@@ -21,7 +21,7 @@ const Login = () => {
     try {
       const cartId = Cache.retrieve(Cache.KEYS.CART_ID);
       const cartReference = upsertCart(cartId);
-      await cartReference.set({ isLogged: false });
+      await cartReference.set({ userId: false });
       setCartId(cartReference.id);
     } catch (e) {
       console.error(e);
