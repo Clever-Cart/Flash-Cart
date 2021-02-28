@@ -4,7 +4,7 @@ import './App.css';
 import Login from './app/Pages/Login';
 
 const App = () => (
-  <div className="App container">
+  <div id="wrapper">
     <Login />
   </div>
 );
