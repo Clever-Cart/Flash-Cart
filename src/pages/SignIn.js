@@ -1,11 +1,22 @@
 import React from 'react';
 import QRCode from 'react-qr-code';
+import { connect } from 'react-redux';
+import debounce from 'debounce';
 
 import Cache from '../services/cache';
 import Database from '../services/database';
 
-const SignIn = ({ history }) => {
+const SignIn = ({ history, login }) => {
   const [cartId, setCartId] = React.useState();
+
+  const cartSnapshot = debounce((documentSnapshot) => {
+    const data = documentSnapshot.data();
+
+    if (data && data.userId) {
+      login();
+      history.push('/dashboard');
+    }
+  }, 1000, true);
 
   const cartObserver = () => {
     if (!cartId) {
@@ -13,13 +24,7 @@ const SignIn = ({ history }) => {
     }
 
     return Database.get('Carts', cartId)
-      .onSnapshot(documentSnapshot => {
-        const data = documentSnapshot.data();
-
-        if (data && data.userId) {
-          history.push('/dashboard');
-        }
-      });
+      .onSnapshot(cartSnapshot);
   };
 
   React.useEffect(() => {
@@ -50,4 +55,8 @@ const SignIn = ({ history }) => {
   return cartId ? <QRCode value={cartId} /> : null;
 };
 
-export default SignIn;
+const mapDispatchToProps = dispatch => ({
+  login: () => dispatch({ type: 'LOGIN' })
+});
+
+export default connect(null, mapDispatchToProps)(SignIn);

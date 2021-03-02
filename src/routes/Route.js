@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 const RouteWrapper = ({
   component: Component,
   isPrivate,
+  signed,
   ...rest
 }) => {
-  const signed = false;
-
   if (isPrivate && !signed) {
     return <Redirect to='/' />;
   }
@@ -21,12 +21,16 @@ const RouteWrapper = ({
 }
 
 RouteWrapper.propTypes = {
-  isPrivate: PropTypes.bool,
-  component: PropTypes.oneOfType([PropTypes.element, PropTypes.func]).isRequired,
+  signed: PropTypes.bool,
+  isPrivate: PropTypes.bool
 };
 
 RouteWrapper.defaultProps = {
   isPrivate: false,
 };
 
-export default RouteWrapper;
+const mapStateToProps = state => ({
+	signed: state.app.signed
+});
+
+export default connect(mapStateToProps)(RouteWrapper);
