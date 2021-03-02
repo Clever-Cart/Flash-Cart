@@ -13,7 +13,7 @@ const SignIn = ({ history, login }) => {
     const data = documentSnapshot.data();
 
     if (data && data.userId) {
-      login();
+      login({ userId: data.userId });
       history.push('/dashboard');
     }
   }, 1000, true);
@@ -56,7 +56,7 @@ const SignIn = ({ history, login }) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  login: () => dispatch({ type: 'LOGIN' })
+  login: payload => dispatch({ type: 'LOGIN', payload })
 });
 
 export default connect(null, mapDispatchToProps)(SignIn);
