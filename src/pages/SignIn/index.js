@@ -3,8 +3,14 @@ import QRCode from 'react-qr-code';
 import { connect } from 'react-redux';
 import debounce from 'debounce';
 
-import Cache from '../services/cache';
-import Database from '../services/database';
+import Box from '@material-ui/core/Box';
+import Divider from '@material-ui/core/Divider';
+import Container from '@material-ui/core/Container';
+
+import Cache from '../../services/cache';
+import Database from '../../services/database';
+
+import Form from './Form';
 
 const SignIn = ({ history, login }) => {
   const [cartId, setCartId] = React.useState();
@@ -52,7 +58,19 @@ const SignIn = ({ history, login }) => {
     })();
   }, []);
 
-  return cartId ? <QRCode value={cartId} /> : null;
+  if (!cartId) {
+    return null;
+  }
+
+  return (
+    <Container maxWidth='sm'>
+      <Box flexDirection='row' display='flex' justifyContent='space-between'>
+        <QRCode value={cartId} />
+        <Divider orientation='vertical' flexItem />
+        <Form cartId={cartId} />
+      </Box>
+    </Container>
+  );
 };
 
 const mapDispatchToProps = dispatch => ({
