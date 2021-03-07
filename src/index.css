@@ -7,3 +7,8 @@ body {
   background-color: white;
   font-family: 'Roboto', sans-serif;
 }
+
+.box {
+  width: 100vh;
+  height: 100vh;
+}
