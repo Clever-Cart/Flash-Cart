@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Button from '@material-ui/core/Button';
 
 import Database from '../services/database';
+import '../assets/dashboard.css'
 
 const Dashboard = ({ history, logout, userId }) => {
   const handleClick = async() => {
@@ -17,11 +17,11 @@ const Dashboard = ({ history, logout, userId }) => {
   }
 
   return (
-    <div>
+    <div className="dashboard">
       <h1>Dashboard</h1>
-      <Button variant='contained' color='primary' onClick={handleClick}>
+      <button className="secondary-button" onClick={handleClick}>
         Sair
-      </Button>
+      </button>
     </div>
   );
 };

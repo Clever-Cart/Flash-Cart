@@ -41,6 +41,7 @@ const Form = ({ cartId }) => {
       />
       <input
         className="input-field"
+        type="password"
         placeholder='Senha'
         onChange={event => handleChange('password', event.target.value)}
       />

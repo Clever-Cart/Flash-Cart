@@ -12,6 +12,7 @@ import Database from '../../services/database';
 
 import Form from './Form';
 import '../../assets/components.css';
+import '../../assets/signin.css';
 
 const SignIn = ({ history, login }) => {
   const [cartId, setCartId] = React.useState();
@@ -64,29 +65,14 @@ const SignIn = ({ history, login }) => {
   }
 
   return (
-    <div>
-    <Container maxWidth='lg' flexdirection="row">
-      <div className='box'>
-        <Box
-          display='flex'
-          flexDirection='row'
-          justifyContent='space-between'
-          alignItems='center'
-          minHeight='100%'
-        >
-          <QRCode value={cartId} size={512} fgColor="#F97D7D" />
-          <Divider orientation='vertical' flexItem />
-        {/* </Box>
-        <Box
-          display='flex'
-          justifyContent='space-around'
-          alignItems='center'
-          minHeight='100%'
-        > */}
-          <Form cartId={cartId} />
-        </Box>
+    <div className="box">
+      <div className="code-box">
+        <QRCode value={cartId} size={512} fgColor="#F97D7D" />
       </div>
-    </Container>
+      <Divider orientation='vertical' flexItem />
+      <div className="signin-box">
+        <Form cartId={cartId} />
+      </div>
     </div>
   );
 };

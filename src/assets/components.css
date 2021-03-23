@@ -1,7 +1,22 @@
 .box {
-  background-color: white;
-  width: 100vh;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 10rem;
+  font-weight: bold;
+  color: #F97D7D;
+}
+
+h2 {
+  font-size: 5rem;
+  font-weight: bold;
+  color: #F97D7D;
 }
 
 .input-field{
@@ -13,7 +28,7 @@
   border-radius: 50px;
   background-color: white;
   box-sizing: border-box;
-  font-size: 20px;
+  font-size: 15px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
@@ -29,5 +44,20 @@
   font-size: 20px;
   font-weight: bold;
   color: white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.secondary-button {
+  height: 3vh;
+  width: 10vh;
+  border: 1px solid #F97D7D;
+  margin: 1rem;
+  text-align: center;
+  border-radius: 50px;
+  background-color: white;
+  box-sizing: border-box;
+  font-size: 15px;
+  font-weight: bold;
+  color: #F97D7D;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
