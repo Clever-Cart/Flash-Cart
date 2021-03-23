@@ -3,9 +3,7 @@ import QRCode from 'react-qr-code';
 import { connect } from 'react-redux';
 import debounce from 'debounce';
 
-import Box from '@material-ui/core/Box';
 import Divider from '@material-ui/core/Divider';
-import Container from '@material-ui/core/Container';
 
 import Cache from '../../services/cache';
 import Database from '../../services/database';
@@ -67,7 +65,7 @@ const SignIn = ({ history, login }) => {
   return (
     <div className="box">
       <div className="code-box">
-        <QRCode value={cartId} size={512} fgColor="#F97D7D" />
+        <QRCode value={cartId} size={512} bgColor="#F97D7D" fgColor="white" />
       </div>
       <Divider orientation='vertical' flexItem />
       <div className="signin-box">

@@ -12,7 +12,7 @@ const Dashboard = ({ history, logout, userId }) => {
     } catch (e) {
       // Do nothing
     }
-    history.goBack();
+    history.push("/");
     logout();
   }
 
