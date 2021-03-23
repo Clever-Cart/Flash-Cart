@@ -1,0 +1,33 @@
+.box {
+  background-color: white;
+  width: 100vh;
+  height: 100vh;
+}
+
+.input-field{
+  height: 5vh;
+  width: 20vh;
+  border: 1px solid #F97D7D;
+  margin: 1rem;
+  text-align: center;
+  border-radius: 50px;
+  background-color: white;
+  box-sizing: border-box;
+  font-size: 20px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.main-button {
+  height: 5vh;
+  width: 20vh;
+  border: 1px solid #F97D7D;
+  margin: 1rem;
+  text-align: center;
+  border-radius: 50px;
+  background-color: #F97D7D;
+  box-sizing: border-box;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
