@@ -1,13 +1,15 @@
 .card {
     display: flex;
     flex-direction: column;
-    width: 20vh;
-    height: 20vh;
+    width: 17vh;
+    height: 17vh;
     background-color: #F97D7D;
     border-radius: 15px 15px 15px 15px;
     justify-content: flex-end;
     align-items: center;
     box-shadow: 3px 10px 5px 2px rgba(0, 0, 0, 0.25);
+    margin-top: 1vh;
+    margin-bottom: 1vh;
 }
 
 .card__img {
@@ -26,6 +28,8 @@
     position: absolute;
     align-items: center;
     justify-content: space-between;
+    width: 7%;
+    height: 5%;
 }
 
 .card__info--price,
