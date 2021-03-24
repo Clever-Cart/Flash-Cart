@@ -9,7 +9,7 @@ const CardProduct = ({
 }) => {
     return (
         <div className="card" onClick={() => alert("Hello from here")}>
-            <img className="card__img" src={thumbnail} />
+            <img className="card__img" src={thumbnail} alt="products" />
             <div className="card__info">
                 <span className="card__info--name">{name}</span>
                 <span className="card__info--price">R$ {price}</span>

@@ -32,6 +32,20 @@ const Dashboard = ({ history, logout, userId }) => {
     Database.getProducts(cartId, setProducts);
   }
 
+  const calculateTotalProduct = () => {
+    let productsPrice = 0.0;
+    if (products.length > 0) {
+      products.map((product) => {
+        productsPrice += product.price;
+      });
+    }
+    return convertPrice(productsPrice);
+  }
+
+  const convertPrice = (price) => {
+    return price.toLocaleString('pt-br', {minimumFractionDigits: 2});
+  }
+
   return (
     <div className="dashboard">
       <div>
@@ -43,12 +57,12 @@ const Dashboard = ({ history, logout, userId }) => {
       <div className="list">
         <span className="list__header"><h1>Lista de Compras</h1></span>
         <div className="list__products">
-          {products.map((product) => (
-            <CardProduct name={product.name} price={product.price} thumbnail={product.thumbnail} />
+          {products.map((product, index) => (
+            <CardProduct key={index} name={product.name} price={convertPrice(product.price)} thumbnail={product.thumbnail} />
           ))}
         </div>
         <div className="list__footer">
-          <span><h3>Seu total: R$ 60,00</h3></span>
+          <span><h3>Seu total: R$ {calculateTotalProduct()}</h3></span>
           <span><h3>Utilize o app no seu celular para pagar</h3></span>
         </div>
       </div>
