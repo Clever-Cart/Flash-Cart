@@ -13,8 +13,9 @@
 }
 
 .card__img {
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 85%;
+    max-height: 85%;
+    margin-bottom: 5px;
     position: relative;
 }
 
@@ -22,14 +23,15 @@
     display: flex;
     background-color: #F97D7D;
     font-family: 'Roboto', sans-serif;
-    font-weight: 500;
+    font-weight: bold;
     color: #FFFFFF;
-    font-size: 1.125em;
+    font-size: 1.25rem;
     position: absolute;
     align-items: center;
-    justify-content: space-between;
-    width: 7%;
-    height: 5%;
+    justify-content: space-around;
+    width: 8%;
+    border-radius: 0px 0px 15px 15px;
+    height: 6%;
 }
 
 .card__info--price,

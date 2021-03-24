@@ -26,7 +26,7 @@ const Dashboard = ({ history, logout, userId }) => {
   React.useEffect(() => {
     getProducts();
   }, [])
-
+  
   const getProducts = () => {
     const cartId = Cache.retrieve(Cache.KEYS.CART_ID);
     Database.getProducts(cartId, setProducts);
@@ -43,17 +43,9 @@ const Dashboard = ({ history, logout, userId }) => {
       <div className="list">
         <span className="list__header"><h1>Lista de Compras</h1></span>
         <div className="list__products">
-          {/* {products.map(() => {
-            <CardProduct />
-          })} */}
-          <CardProduct />
-          <CardProduct />
-          <CardProduct />
-          <CardProduct />
-          <CardProduct />
-          <CardProduct />
-          <CardProduct />
-          <CardProduct />
+          {products.map((product) => (
+            <CardProduct name={product.name} price={product.price} thumbnail={product.thumbnail} />
+          ))}
         </div>
         <div className="list__footer">
           <span><h3>Seu total: R$ 60,00</h3></span>
