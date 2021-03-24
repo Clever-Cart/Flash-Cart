@@ -1,0 +1,34 @@
+.dashboard {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: -3px 0px 5px 2px rgba(0, 0, 0, 0.25);
+    height: 100vh;
+}
+
+.list__header {
+    background-color: #F97D7D;
+    width: 100%;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.list__footer {
+    display: flex;
+    flex-direction: column;
+    background-color: #F97D7D;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+
+.list__products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
