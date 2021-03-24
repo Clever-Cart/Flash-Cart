@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Button from '@material-ui/core/Button';
 
 import Database from '../../services/database';
 import Cache from '../../services/cache';
@@ -26,7 +25,7 @@ const Dashboard = ({ history, logout, userId }) => {
   React.useEffect(() => {
     getProducts();
   }, [])
-  
+
   const getProducts = () => {
     const cartId = Cache.retrieve(Cache.KEYS.CART_ID);
     Database.getProducts(cartId, setProducts);
@@ -36,7 +35,7 @@ const Dashboard = ({ history, logout, userId }) => {
     let productsPrice = 0.0;
     if (products.length > 0) {
       products.map((product) => {
-        productsPrice += product.price;
+        return productsPrice += product.price;
       });
     }
     return convertPrice(productsPrice);
@@ -50,9 +49,9 @@ const Dashboard = ({ history, logout, userId }) => {
     <div className="dashboard">
       <div>
         <h1>Dashboard</h1>
-        <Button variant='contained' color='primary' onClick={handleClick}>
+        <button className="secondary-button" onClick={handleClick}>
           Sair
-        </Button>
+        </button>
       </div>
       <div className="list">
         <span className="list__header"><h1>Lista de Compras</h1></span>

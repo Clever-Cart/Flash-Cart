@@ -3,14 +3,14 @@ import QRCode from 'react-qr-code';
 import { connect } from 'react-redux';
 import debounce from 'debounce';
 
-import Box from '@material-ui/core/Box';
 import Divider from '@material-ui/core/Divider';
-import Container from '@material-ui/core/Container';
 
 import Cache from '../../services/cache';
 import Database from '../../services/database';
 
 import Form from './Form';
+import '../../assets/components.css';
+import '../../assets/signin.css';
 
 const SignIn = ({ history, login }) => {
   const [cartId, setCartId] = React.useState();
@@ -63,21 +63,15 @@ const SignIn = ({ history, login }) => {
   }
 
   return (
-    <Container maxWidth='sm'>
-      <div className='box'>
-        <Box
-          display='flex'
-          flexDirection='row'
-          justifyContent='space-between'
-          alignItems='center'
-          minHeight='100%'
-        >
-          <QRCode value={cartId} />
-          <Divider orientation='vertical' flexItem />
-          <Form cartId={cartId} />
-        </Box>
+    <div className="box">
+      <div className="code-box">
+        <QRCode value={cartId} size={512} bgColor="#F97D7D" fgColor="white" />
       </div>
-    </Container>
+      <Divider orientation='vertical' flexItem />
+      <div className="signin-box">
+        <Form cartId={cartId} />
+      </div>
+    </div>
   );
 };
 
