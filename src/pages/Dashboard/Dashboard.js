@@ -6,6 +6,8 @@ import Cache from '../../services/cache';
 
 import CardProduct from '../../components/card-product';
 
+import { data } from '../../assets/map2';
+
 import './styles.css';
 
 const Dashboard = ({ history, logout, userId }) => {
@@ -44,11 +46,15 @@ const Dashboard = ({ history, logout, userId }) => {
   const convertPrice = (price) => {
     return price.toLocaleString('pt-br', {minimumFractionDigits: 2});
   }
+  
+  const Example = ({ data }) => <img src={`data:image/png;base64,${data}`} />
 
   return (
     <div className="dashboard">
       <div>
         <h1>Dashboard</h1>
+        <Example data={ data.image }/>
+
         <button className="secondary-button" onClick={handleClick}>
           Sair
         </button>
