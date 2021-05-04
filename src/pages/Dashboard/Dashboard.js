@@ -2,15 +2,29 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import Database from '../../services/database';
-import Cache from '../../services/cache';
+import styled from 'styled-components'
 
 import CardProduct from '../../components/card-product';
+import Cart from '../../components/Cart';
+import Cache from '../../services/cache';
 
 import './styles.css';
 
 const Dashboard = ({ history, logout, userId }) => {
   const [products, setProducts] = React.useState([])
   const [map, setMap] = React.useState()
+  const [x, setX] = React.useState(0);
+  const [y, setY] = React.useState(0);
+
+  const Carts = styled.div`
+    width: 100px;
+    height: 100px;
+    left: ${({ x }) => x+'rem'};
+    top: ${({ y }) => y+'rem'};
+    position:absolute;
+    display: flex;
+    align-items: center;
+  `
 
   const handleClick = async () => {
     const user = Database.get('Users', userId);
@@ -23,17 +37,47 @@ const Dashboard = ({ history, logout, userId }) => {
     logout();
   }
 
-  React.useEffect(() => {
+  function increment(x){
+    return x + 1;
+  }
+  function decrement(x){
+    return x - 1;
+  }
+  const actionXMap = {
+     ArrowLeft: decrement,
+     ArrowRight: increment
+  }
+  const actionYMap = {
+     ArrowDown: increment,
+     ArrowUp: decrement
+  }
+
+  React.useEffect((e) => {
     getProducts();
     getMaps();
+    moveCart();
   }, [])
 
+  function handleKeyPress(e){
+    const actionX = actionXMap[e.key];
+    const actionY = actionYMap[e.key];
+    actionX && setX(actionX);
+    actionY && setY(actionY);
+  }
+  const moveCart = () => {
+    document.addEventListener("keydown", handleKeyPress);
+    document.addEventListener("keyup", handleKeyPress);
+    document.addEventListener("keyleft", handleKeyPress);
+    document.addEventListener("keyright", handleKeyPress);
+}
+
   const getProducts = () => {
-    const cartId = Cache.retrieve(Cache.KEYS.CART_ID);
+    // const cartId = Cache.retrieve(Cache.KEYS.CART_ID);
     Database.getProducts('LQ7lrMxGTPpHFEV4JHmZ', setProducts);
   }
 
   const getMaps = () => {
+    // const cartId = Cache.retrieve(Cache.KEYS.CART_ID);
     Database.getMaps('LQ7lrMxGTPpHFEV4JHmZ', setMap);
   }
 
@@ -54,8 +98,11 @@ const Dashboard = ({ history, logout, userId }) => {
   const Map = ({ data }) => <img className="map" src={map} alt="Mapa" />
 
   return (
-    <div className="dashboard">
-      <div>
+    <div onKeyPress={handleKeyPress} className="dashboard">
+      <div onKeyPress={handleKeyPress}>
+        <Carts x={x} y={y}>
+          <Cart />
+        </Carts>
         <Map/>
       </div>
       <div className="list">

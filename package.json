@@ -16,7 +16,8 @@
     "react-qr-code": "^1.1.1",
     "react-redux": "^7.2.2",
     "react-router-dom": "^5.2.0",
-    "redux": "^4.0.5"
+    "redux": "^4.0.5",
+    "styled-components": "^5.2.3"
   },
   "devDependencies": {
     "electron": "^1.6.11",
