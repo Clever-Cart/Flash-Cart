@@ -30,7 +30,7 @@ const Dashboard = ({ history, logout, userId }) => {
 
   const getProducts = () => {
     const cartId = Cache.retrieve(Cache.KEYS.CART_ID);
-    Database.getProducts(cartId, setProducts);
+    Database.getProducts('LQ7lrMxGTPpHFEV4JHmZ', setProducts);
   }
 
   const getMaps = () => {
@@ -51,7 +51,7 @@ const Dashboard = ({ history, logout, userId }) => {
     return price.toLocaleString('pt-br', {minimumFractionDigits: 2});
   }
 
-  const Map = ({ data }) => <img src={map} alt="Mapa" />
+  const Map = ({ data }) => <img className="map" src={map} alt="Mapa" />
 
   return (
     <div className="dashboard">
@@ -59,7 +59,7 @@ const Dashboard = ({ history, logout, userId }) => {
         <Map/>
       </div>
       <div className="list">
-        <span className="list__header"><h1>Lista de Compras</h1></span>
+        <span className="list__header"><h3>Lista de Compras</h3></span>
         <div className="list__products">
           {products.map((product, index) => (
             <CardProduct key={index} name={product.name} price={convertPrice(product.price)} thumbnail={product.thumbnail} />

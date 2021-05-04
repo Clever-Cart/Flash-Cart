@@ -26,7 +26,6 @@ class Database {
       const data = querySnapshot.docs.map(doc => {
         return doc.data();
       });
-      console.log(data[0].picture);
       callback(data[0].picture)
     });
   }
