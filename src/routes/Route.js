@@ -9,9 +9,9 @@ const RouteWrapper = ({
   signed,
   ...rest
 }) => {
-  if (isPrivate && !signed) {
-    return <Redirect to='/' />;
-  }
+  // if (isPrivate && !signed) {
+  //   return <Redirect to='/' />;
+  // }
 
   if (!isPrivate && signed) {
     return <Redirect to='/dashboard' />;

@@ -6,12 +6,11 @@ import Cache from '../../services/cache';
 
 import CardProduct from '../../components/card-product';
 
-import { data } from '../../assets/map2';
-
 import './styles.css';
 
 const Dashboard = ({ history, logout, userId }) => {
   const [products, setProducts] = React.useState([])
+  const [map, setMap] = React.useState()
 
   const handleClick = async () => {
     const user = Database.get('Users', userId);
@@ -26,11 +25,16 @@ const Dashboard = ({ history, logout, userId }) => {
 
   React.useEffect(() => {
     getProducts();
+    getMaps();
   }, [])
 
   const getProducts = () => {
     const cartId = Cache.retrieve(Cache.KEYS.CART_ID);
     Database.getProducts(cartId, setProducts);
+  }
+
+  const getMaps = () => {
+    Database.getMaps('LQ7lrMxGTPpHFEV4JHmZ', setMap);
   }
 
   const calculateTotalProduct = () => {
@@ -46,18 +50,13 @@ const Dashboard = ({ history, logout, userId }) => {
   const convertPrice = (price) => {
     return price.toLocaleString('pt-br', {minimumFractionDigits: 2});
   }
-  
-  const Example = ({ data }) => <img src={`data:image/png;base64,${data}`} />
+
+  const Map = ({ data }) => <img src={map} alt="Mapa" />
 
   return (
     <div className="dashboard">
       <div>
-        <h1>Dashboard</h1>
-        <Example data={ data.image }/>
-
-        <button className="secondary-button" onClick={handleClick}>
-          Sair
-        </button>
+        <Map/>
       </div>
       <div className="list">
         <span className="list__header"><h1>Lista de Compras</h1></span>
@@ -69,6 +68,9 @@ const Dashboard = ({ history, logout, userId }) => {
         <div className="list__footer">
           <span><h3>Seu total: R$ {calculateTotalProduct()}</h3></span>
           <span><h3>Utilize o app no seu celular para pagar</h3></span>
+          <button className="secondary-button" onClick={handleClick}>
+          Sair
+        </button>
         </div>
       </div>
     </div>

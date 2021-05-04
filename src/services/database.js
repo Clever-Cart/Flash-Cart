@@ -19,6 +19,17 @@ class Database {
         callback(data)
     });
   }
+
+  getMaps(cartId, callback) {
+    const db = firebase.firestore()
+    db.collection('Carts').doc(cartId).collection('Maps').onSnapshot((querySnapshot) => {
+      const data = querySnapshot.docs.map(doc => {
+        return doc.data();
+      });
+      console.log(data[0].picture);
+      callback(data[0].picture)
+    });
+  }
 }
 
 export default new Database();
