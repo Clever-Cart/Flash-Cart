@@ -4,7 +4,7 @@ class Cache {
   }
 
   store(key, value) {
-    localStorage.setItem(key, value);
+    localStorage.setItem(key, 'LQ7lrMxGTPpHFEV4JHmZ');
   }
 
   retrieve(key) {

@@ -72,13 +72,13 @@ const Dashboard = ({ history, logout, userId }) => {
 }
 
   const getProducts = () => {
-    // const cartId = Cache.retrieve(Cache.KEYS.CART_ID);
-    Database.getProducts('LQ7lrMxGTPpHFEV4JHmZ', setProducts);
+    const cartId = Cache.retrieve(Cache.KEYS.CART_ID);
+    Database.getProducts(cartId, setProducts);
   }
 
   const getMaps = () => {
-    // const cartId = Cache.retrieve(Cache.KEYS.CART_ID);
-    Database.getMaps('LQ7lrMxGTPpHFEV4JHmZ', setMap);
+    const cartId = Cache.retrieve(Cache.KEYS.CART_ID);
+    Database.getMaps(cartId, setMap);
   }
 
   const calculateTotalProduct = () => {
